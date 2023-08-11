@@ -61,9 +61,8 @@ int main(void)
     else
     {
         Node * delNode = head;
+        Node * dummy = head;
         Node * delNextNode = head -> next;
-
-        free(delNode);
 
         while(delNextNode != NULL)  //두 번째 이후 노드 삭제
         {
@@ -73,6 +72,7 @@ int main(void)
             printf("%d을(를) 삭제합니다.\n", delNode -> data);
             free(delNode);
         }
+        free(dummy);
     }
 
     return 0;
