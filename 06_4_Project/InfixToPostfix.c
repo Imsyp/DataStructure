@@ -42,7 +42,7 @@ void ConvToRPNExp(char exp[])
     int i, idx=0;
     char tok, popOp;
 
-    memset(convExp, 0, sizeof(char)*expLen+1);
+    memset(convExp, 0, sizeof(char)*expLen+1);  //void memset(void * ptr, int value, size_t num) -> value가 저장된 ptr 반환, 저장 실패시 NULL 반환
     StackInit(&stack);
 
     for(i=0; i<expLen; i++)
@@ -53,7 +53,7 @@ void ConvToRPNExp(char exp[])
             convExp[idx++] = tok;
         else
         {
-            switch(tok)
+            switch(tok) //tok을 스택에 넣을지, 바로 옮길지 결정하는 구문
             {
             case '(':
                 SPush(&stack, tok);
@@ -69,8 +69,8 @@ void ConvToRPNExp(char exp[])
                 break;
             case '+': case '-':
             case '*': case '/':
-                while(!SIsEmpty(&stack) && WhoPrecOp(SPeek(&stack), tok) >= 0)
-                    convExp[idx++] = SPop(&stack);
+                while(!SIsEmpty(&stack) && WhoPrecOp(SPeek(&stack), tok) >= 0)  //원래 있던 연산자가 우선순위 높거나 같으면
+                    convExp[idx++] = SPop(&stack);  //stack을 비운다.
                 SPush(&stack, tok);
                 break;
             }
