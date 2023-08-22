@@ -37,6 +37,29 @@ BTreeNode * MakeExpTree(char exp[])
     return SPop(&stack);
 }
 
+int EvaluateExpTree(BTreeNode * bt)
+{
+    int op1, op2;
+
+    if(GetLeftSubTree(bt)==NULL && GetRightSubTree(bt)==NULL)
+        return GetData(bt);
+
+    op1=EvaluateExpTree(GetLeftSubTree(bt));
+    op2=EvaluateExpTree(GetRightSubTree(bt));
+
+    switch(GetData(bt))
+    {
+    case '+':
+        return op1+op2;
+    case '-':
+        return op1-op2;
+    case '*':
+        return op1*op2;
+    case '/':
+        return op1/op2;
+    }
+}
+
 void ShowNodeData(int data)
 {
     if(0<data && data<=9)

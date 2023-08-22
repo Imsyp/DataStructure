@@ -15,6 +15,7 @@ int main(void)
     printf("후위 표기법의 수식: ");
     ShowPostfixTypeExp(eTree); printf("\n");
 
+    printf("연산의 결과: %d \n", EvaluateExpTree(eTree));
 
     return 0;
 }
