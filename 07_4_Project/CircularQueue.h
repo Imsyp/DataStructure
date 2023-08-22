@@ -4,7 +4,7 @@
 #define TRUE        1
 #define FALSE       0
 
-#define QUE_LEN     100
+#define QUE_LEN     10
 typedef int Data;
 
 typedef struct _cQueue
