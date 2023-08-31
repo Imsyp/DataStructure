@@ -2,7 +2,7 @@
 
 void HeapInit(Heap * ph)
 {
-    ph->numOfData = 0;
+    ph ->numOfData;
 }
 
 int HIsEmpty(Heap * ph)
@@ -30,16 +30,17 @@ int GetRChildIDX(int idx)
 
 int GetHiPriChildIDX(Heap * ph, int idx)
 {
-    if(GetLChildIDX(idx)>ph->numOfData) //자식 노드가 없는 경우
+    if(GetLChildIDX(idx)>ph->numOfData)
         return 0;
-    else if(GetLChildIDX(idx) == ph->numOfData) //자식 노드가 좌측에만 있는 경우
+    else if(GetLChildIDX(idx) == ph->numOfData)
         return GetLChildIDX(idx);
     else
     {
+
         if(ph->heapArr[GetLChildIDX(idx)].pr > ph->heapArr[GetRChildIDX(idx)].pr)
             return GetRChildIDX(idx);
         else
-            return GetLChildIDX(idx);
+            return GetLChildIDX;
     }
 }
 
@@ -50,36 +51,35 @@ void HInsert(Heap * ph, HData data, Priority pr)
 
     while(idx != 1)
     {
-        if(pr<(ph->heapArr[GetParentIDX(idx)].pr))
+        if(ph->heapArr[GetParentIDX(idx)].pr>pr)
         {
-            ph->heapArr[idx] = ph->heapArr[GetParentIDX(idx)];
+            ph->heapArr[idx]=ph->heapArr[GetParentIDX(idx)];
             idx = GetParentIDX(idx);
         }
         else
             break;
+        
     }
-
-    ph->heapArr[idx] = nelem;
-    ph->numOfData +=1;
 }
 
 HData HDelete(Heap * ph)
 {
-    HData retData = (ph->heapArr[1]).data;
+    HData retData = ph->heapArr[1].data;
     HeapElem lastElem = ph->heapArr[ph->numOfData];
 
-    int parentIdx = 1;
+    int parentIdx = 1;  //루트 노드가 위치해야 할 인덱스 값 저장
     int childIdx;
 
-    while(childIdx = GetHiPriChildIDX(ph, parentIdx))
+    //루트 노드의 우선순위가 높은 자식 노드를 시작으로 반복문 시작
+    while(childIdx==GetHiPriChildIDX(ph, parentIdx))
     {
-        if(lastElem.pr <= ph->heapArr[childIdx].pr)
+        if(lastElem.pr<=(ph->heapArr[childIdx]).pr) //자식노드보다 우선순위가 높으면 stop!
             break;
-        ph->heapArr[parentIdx] = ph->heapArr[childIdx];
-        parentIdx = childIdx;
+        ph->heapArr[parentIdx]=ph->heapArr[childIdx];
+        parentIdx=childIdx;
     }
 
-    ph->heapArr[parentIdx] = lastElem;
+    ph->heapArr[parentIdx]=lastElem;
     ph->numOfData -= 1;
     return retData;
 }
