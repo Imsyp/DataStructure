@@ -6,11 +6,11 @@ void SelSort(int arr[], int n)
     int maxIdx;
     int temp;
 
-    for(i=0; i<n-1; j++)
+    for(i=0; i<n-1; i++)
     {
         maxIdx = i;
 
-        for(i=j+1; j<n; j++)
+        for(j=i+1; j<n; j++)
         {
             if(arr[j]<arr[maxIdx])
                 maxIdx = j;
