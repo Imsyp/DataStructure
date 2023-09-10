@@ -8,11 +8,28 @@ void Swap(int arr[], int idx1, int idx2)
     arr[idx2] = temp;
 }
 
+int pivotSelect(int arr[], int left, int right)
+{
+    int mid = (left + right)/2;
+
+    if((arr[left]>= arr[mid] && arr[right]>=arr[left])||(arr[left]<= arr[mid] && arr[right]<=arr[left]))
+        return left;
+    else if((arr[right]>= arr[mid] && arr[left]>=arr[right])||(arr[right]<= arr[mid] && arr[left]<=arr[right]))
+        return right;
+    else
+        return mid;
+}
+
 int Partition(int arr[], int left, int right)
 {
-    int pivot = arr[left];
+    int pIdx = pivotSelect(arr, left, right);
+    int pivot = arr[pIdx];
     int low = left+1;
     int high = right;
+
+    Swap(arr, left, pIdx);
+
+    printf("pivot: %d \n", pivot);
 
     while(low <= high)
     {
@@ -49,8 +66,7 @@ void QuickSort(int arr[], int left, int right)
 
 int main(void)
 {
-    int arr[7] = {3, 2, 4, 1, 7, 6, 5};
-    //int arr[3] = {3, 3, 3};
+    int arr[15] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
 
     int len = sizeof(arr)/sizeof(int);
     int i;
