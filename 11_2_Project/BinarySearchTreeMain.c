@@ -19,26 +19,26 @@ int main(void)
 
     sNode = BSTSearch(bstRoot, 1);
     if(sNode == NULL)
-        printf("íƒìƒ‰ ì‹¤íŒ¨ \n");
+        printf("Å½»ö ½ÇÆĞ \n");
     else
-        printf("íƒìƒ‰ì— ì„±ê³µí•œ í‚¤ì˜ ê°’: %d \n", BSTGetNodeData(sNode));
+        printf("Å½»ö¿¡ ¼º°øÇÑ Å°ÀÇ °ª: %d \n", BSTGetNodeData(sNode));
 
     sNode = BSTSearch(bstRoot, 4);
     if(sNode == NULL)
-        printf("íƒìƒ‰ ì‹¤íŒ¨ \n");
+        printf("Å½»ö ½ÇÆĞ \n");
     else
-        printf("íƒìƒ‰ì— ì„±ê³µí•œ í‚¤ì˜ ê°’: %d \n", BSTGetNodeData(sNode));
+        printf("Å½»ö¿¡ ¼º°øÇÑ Å°ÀÇ °ª: %d \n", BSTGetNodeData(sNode));
 
     sNode = BSTSearch(bstRoot, 6);
     if(sNode == NULL)
-        printf("íƒìƒ‰ ì‹¤íŒ¨ \n");
+        printf("Å½»ö ½ÇÆĞ \n");
     else
-        printf("íƒìƒ‰ì— ì„±ê³µí•œ í‚¤ì˜ ê°’: %d \n", BSTGetNodeData(sNode));
+        printf("Å½»ö¿¡ ¼º°øÇÑ Å°ÀÇ °ª: %d \n", BSTGetNodeData(sNode));
 
     sNode = BSTSearch(bstRoot, 7);
     if(sNode == NULL)
-        printf("íƒìƒ‰ ì‹¤íŒ¨ \n");
+        printf("Å½»ö ½ÇÆĞ \n");
     else
-        printf("íƒìƒ‰ì— ì„±ê³µí•œ í‚¤ì˜ ê°’: %d \n", BSTGetNodeData(sNode));
+        printf("Å½»ö¿¡ ¼º°øÇÑ Å°ÀÇ °ª: %d \n", BSTGetNodeData(sNode));
     return 0;
 }

@@ -60,7 +60,7 @@ BTreeNode * BSTSearch(BTreeNode * bst, BSTData target)
 
     while(cNode != NULL)
     {
-        cd = GetData(bst);
+        cd = GetData(cNode);
 
         if(target == cd)
             return cNode;

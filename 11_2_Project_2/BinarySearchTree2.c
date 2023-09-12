@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "BinaryTree3.h"
-#include "BinarySearchTree.h"
+#include "BinarySearchTree2.h"
 
 //BST 생성 및 초기화
 void BSTMakeAndInit(BTreeNode ** pRoot)
@@ -73,7 +74,7 @@ BTreeNode * BSTSearch(BTreeNode * bst, BSTData target)
     return NULL;
 }
 
-BTreeNode * BSTRemove(BTreeNode ** pRoot, BSTData target)
+BTreeNode * BSTRemove(BTreeNode ** pRoot, BSTData target) 
 {
     BTreeNode * pVRoot = MakeBTreeNode();
     BTreeNode * pNode = pVRoot;
@@ -82,7 +83,7 @@ BTreeNode * BSTRemove(BTreeNode ** pRoot, BSTData target)
 
     ChangeRightSubTree(pVRoot, *pRoot); //루트 노드가 삭제될 경우를 대비하여 루트 노드의 pNode를 지정
 
-    while(cNode != NULL && GetData(cNode) != target);
+    while(cNode != NULL && GetData(cNode) != target)
     {
         pNode = cNode;
         if(target < GetData(cNode))
@@ -96,13 +97,15 @@ BTreeNode * BSTRemove(BTreeNode ** pRoot, BSTData target)
     
     dNode = cNode;
 
+    //Case 1.
     if(GetLeftSubTree(dNode) == NULL && GetRightSubTree(dNode) == NULL)
     {
-        if(GetLeftSubTree(dNode) == dNode)
-            RemoveLeftSubTree(dNode);
+        if(GetLeftSubTree(pNode) == dNode)
+            RemoveLeftSubTree(pNode);
         else
-            RemoveRightSubTree(dNode);
+            RemoveRightSubTree(pNode);
     }
+    //Case 2.
     else if(GetLeftSubTree(dNode) == NULL || GetRightSubTree(dNode) == NULL)
     {
         BTreeNode * dcNode;
@@ -117,6 +120,7 @@ BTreeNode * BSTRemove(BTreeNode ** pRoot, BSTData target)
         else
             ChangeRightSubTree(pNode, dcNode);
     }
+    //Case 3.
     else
     {
         BTreeNode * mNode = GetRightSubTree(dNode);
@@ -147,8 +151,19 @@ BTreeNode * BSTRemove(BTreeNode ** pRoot, BSTData target)
         *pRoot = GetRightSubTree(pVRoot);
 
     free(pVRoot);
-
+    
     return dNode;
 }
 
-void BSTShowAll(BTreeNode * bst);
+
+
+
+void ShowIntData(int data)
+{
+    printf("%d ",data);
+}
+
+void BSTShowAll(BTreeNode * bst)
+{
+    InorderTraverse(bst, ShowIntData);
+}
