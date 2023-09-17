@@ -5,7 +5,7 @@
 
 typedef struct _person
 {
-    int ssn;
+    int ssn;                //주민등록번호
     char name[STR_LEN];
     char addr[STR_LEN];
 } Person;
