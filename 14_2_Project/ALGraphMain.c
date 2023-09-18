@@ -13,7 +13,7 @@ int main(void)
     AddEdge(&graph, D, E);
     AddEdge(&graph, E, A);
 
-    ShowGraphEdgeInfo(&Graph);
+    ShowGraphEdgeInfo(&graph);
     GraphDestroy(&graph);
 
     return 0;

@@ -12,7 +12,7 @@ typedef struct _ual
     List * adjList;
 } ALGraph;
 
-void Graph(ALGraph * pg, int nv);
+void GraphInit(ALGraph * pg, int nv);
 
 void GraphDestroy(ALGraph * pg);
 
