@@ -10,6 +10,8 @@ void GraphInit(ALGraph * pg, int nv)
     int i;
 
     pg->adjList = (List*)malloc(sizeof(List)*nv);
+    pg->numV = nv;
+    pg->numE = 0;
 
     for(i=0; i<nv; i++)
     {
@@ -42,11 +44,11 @@ void ShowGraphEdgeInfo(ALGraph * pg)
     {
         printf("%c와 연결된 정점: ", i + 65);
 
-        if(LFirst(&(pg->adjList[i]), vx));
+        if(LFirst(&(pg->adjList[i]), &vx));
         {
             printf("%c ", vx + 65);
 
-            while(LNext(&(pg->adjList[i]), vx))
+            while(LNext(&(pg->adjList[i]), &vx))
                 printf("%c ", vx + 65);
         }
 
