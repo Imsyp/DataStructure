@@ -77,48 +77,33 @@ int VisitVertex(ALGraph * pg, int visitV)
 }
 
 //정점의 정보 출력: DFS 기반
-void DFShowGraphVertex(ALGraph * pg, int startV)
+void BFShowGraphVertex(ALGraph * pg, int startV)
 {
-    Stack stack;
+    Queue queue;
     int visitV = startV;
     int nextV;
 
-    StackInit(&stack);
+    QueueInit(&queue);
+
     VisitVertex(pg, visitV);
-    SPush(&stack, visitV);
 
     while(LFirst(&(pg->adjList[visitV]), &nextV) == TRUE)   //첫 정점에 연결된 정점 방문
     {
-        int visitFlag = FALSE;
-
         if(VisitVertex(pg, nextV) == TRUE)
+            Enqueue(&queue, nextV);
+
+        while(LNext(&(pg->adjList[visitV]), &nextV) == TRUE)
         {
-            SPush(&stack, visitV);
-            visitV = nextV;
-            visitFlag = TRUE;
-        }
-        else
-        {
-            while(LNext(&(pg->adjList[visitV]), &nextV) == TRUE)    //첫 시도가 이미 방문한 상태인 경우 다른 정점 방문
-            {
-                if(VisitVertex(pg, nextV) == TRUE)
-                {
-                    SPush(&stack, visitV);
-                    visitV = nextV;
-                    visitFlag = TRUE;
-                    break;
-                }
-            }
+            if(VisitVertex(pg, nextV) == TRUE)
+                Enqueue(&queue, nextV);
         }
 
-        if(visitFlag == FALSE)  //현재 정점에 연결된 모든 정점이 모두 방문한 상태인 경우
-        {
-            if(SIsEmpty(&stack) == TRUE)    //시작점으로 돌아온 경우
-                break;
-            else
-                visitV = SPop(&stack);      //왔던 길 되돌아가는 과정
-        }
+        if (QIsEmpty(&queue) == TRUE)
+            break;
+        else
+            visitV = Dequeue(&queue);
     }
+
 
     memset(pg->visitInfo, 0, sizeof(int) * pg->numV);
 }

@@ -16,13 +16,13 @@ int main(void)
 
     ShowGraphEdgeInfo(&graph);
 
-    DFShowGraphVertex(&graph, A);
+    BFShowGraphVertex(&graph, A);
     printf("\n");
-    DFShowGraphVertex(&graph, C);
+    BFShowGraphVertex(&graph, C);
     printf("\n");
-    DFShowGraphVertex(&graph, E);
+    BFShowGraphVertex(&graph, E);
     printf("\n");
-    DFShowGraphVertex(&graph, G);
+    BFShowGraphVertex(&graph, G);
     printf("\n");
 
     GraphDestory(&graph);
