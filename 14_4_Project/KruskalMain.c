@@ -17,7 +17,7 @@ int main(void)
     AddEdge(&graph, E, C, 7);
     AddEdge(&graph, F, E, 13);
 
-    ConKruskalMST(&graph);      //MST? ??
+    ConKruskalMST(&graph);      
     ShowGraphEdgeInfo(&graph);
     ShowGraphEdgeWeightInfo(&graph);
 
