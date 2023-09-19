@@ -1,5 +1,5 @@
-#ifndef __AL_GRAPG_DFS__
-#define __AL_GRAPG_DFS__
+#ifndef __AL_GRAPG_BFS__
+#define __AL_GRAPG_BFS__
 
 #include "DLinkedList.h"
 
@@ -10,7 +10,7 @@ typedef struct _ual
     int numV;
     int numE;
     List * adjList;
-    int * visitInfo;    //탐색이 진행된 정점의 정보
+    int * visitInfo;    
 } ALGraph;
 
 void GraphInit(ALGraph * pg, int nv);
@@ -21,7 +21,7 @@ void AddEdge(ALGraph * pg, int fromV, int toV);
 
 void ShowGraphEdgeInfo(ALGraph * pg);
 
-//정점의 정보 출력: DFS 기반
-void DFShowGraphVertex(ALGraph * pg, int startV);
+//정점의 정보 출력: BFS 기반
+void BFShowGraphVertex(ALGraph * pg, int startV);
 
 #endif

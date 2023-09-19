@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ALGraphDFS.h"
+#include "ALGraphBFS.h"
 
 int main(void)
 {

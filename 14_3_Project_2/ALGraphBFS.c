@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "DLinkedList.h"
-#include "ALGraphDFS.h"
-#include "ArrayBaseStack.h"
+#include "ALGraphBFS.h"
+#include "CircularQueue.h"
 
 int WhoIsPrecede(int data1, int data2);
 
