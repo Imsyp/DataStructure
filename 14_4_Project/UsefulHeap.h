@@ -1,21 +1,26 @@
 #ifndef __USEFUL_HEAP_H__
 #define __USEFUL_HEAP_H__
 
-#define TRUE        1
-#define FALSE       0
+#include "ALEdge.h"
 
-#define HEAP_LEN    100
+#define TRUE	1
+#define FALSE	0
 
-typedef char HData;  
-typedef int PriorityComp(HData d1, HData d2);   //책에는 typedef int (*PriorityComp)(HData d1, HData d2);로 돼있는데, 그렇게 하면 아래 선언할 때 이중포인터 선언이 돼버림 
+#define HEAP_LEN	100
+
+// typedef char HData;
+typedef Edge HData;
+
+typedef int PriorityComp(HData d1, HData d2);
 
 typedef struct _heap
 {
-    PriorityComp * comp;  
-    int numOfData;
-    HData heapArr[HEAP_LEN];
+	PriorityComp * comp;
+	int numOfData;
+	HData heapArr[HEAP_LEN];
 } Heap;
 
+/*** Heap ���� ����� ****/
 void HeapInit(Heap * ph, PriorityComp pc);
 int HIsEmpty(Heap * ph);
 
